@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BooksManager.Logic", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BooksManager.Logic.Test", "ppedv.BooksManager.Logic.Test\ppedv.BooksManager.Logic.Test.csproj", "{565105BE-2113-4FB5-BD95-8CECD2FF3304}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BooksManager.Data.GoogleApi", "ppedv.BooksManager.Data.GoogleApi\ppedv.BooksManager.Data.GoogleApi.csproj", "{838618EC-4CA0-48E4-9DBF-DF35E8DBE470}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BooksManager.Data.GoogleApi.Tests", "ppedv.BooksManager.Data.GoogleApi.Tests\ppedv.BooksManager.Data.GoogleApi.Tests.csproj", "{F734921F-73A5-4A70-937C-D232384C2EB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{565105BE-2113-4FB5-BD95-8CECD2FF3304}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{565105BE-2113-4FB5-BD95-8CECD2FF3304}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{565105BE-2113-4FB5-BD95-8CECD2FF3304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{838618EC-4CA0-48E4-9DBF-DF35E8DBE470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{838618EC-4CA0-48E4-9DBF-DF35E8DBE470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{838618EC-4CA0-48E4-9DBF-DF35E8DBE470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{838618EC-4CA0-48E4-9DBF-DF35E8DBE470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F734921F-73A5-4A70-937C-D232384C2EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F734921F-73A5-4A70-937C-D232384C2EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F734921F-73A5-4A70-937C-D232384C2EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F734921F-73A5-4A70-937C-D232384C2EB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
