@@ -1,3 +1,4 @@
+using FluentAssertions;
 using ppedv.BooksManager.Model;
 
 namespace ppedv.BooksManager.Logic.Test
@@ -7,21 +8,24 @@ namespace ppedv.BooksManager.Logic.Test
         [Fact]
         public void Ctor_with_null_should_throw()
         {
-            Assert.Throws<ArgumentNullException>("readRepository", () => new BooksService(null!));
+            var act = () => new BooksService(null!);
+
+            act.Should().Throw<ArgumentNullException>().WithParameterName("readRepository");
+            //Assert.Throws<ArgumentNullException>("readRepository", () => new BooksService(null!));
         }
 
         [Fact]
         public void GetBooksOfYearOrderByPrice_should_filter_years_results_5_of_6_Books()
         {
-            var bs = new BooksService(new TestRepo());
+            var testRepo = new TestRepo();
+            var bs = new BooksService(testRepo);
 
             var result = bs.GetBooksOfYearOrderByPrice(2023);
 
-            Assert.Equal(5, result.Count());
+            result.Should().HaveCount(5).And.AllSatisfy(x => x.Id.Should().BeLessThan(6));
+            //Assert.Equal(5, result.Count());
         }
-
     }
-
 
     public class TestRepo : IReadRepository
     {
