@@ -19,19 +19,19 @@ namespace ppedv.BooksManager.Data.GoogleApi
                 yield return ToBook(book);
             }
         }
-        int Id = 0;
+        int _id = 0;
 
         public Book ToBook(Item booksItem)
         {
             return new Book()
             {
-                Id = Id++,
-                Title = booksItem.volumeInfo.title,
+                Id = ++_id,
+                Title = booksItem.volumeInfo.title ?? string.Empty,
                 PageCount = booksItem.volumeInfo.pageCount,
-                //Price = (decimal)book.saleInfo?.listPrice?.amount,
-                Description = booksItem.volumeInfo.description,
-                //ReleaseDate = DateTime.Parse(book.volumeInfo.publishedDate),
-                Authors = booksItem.volumeInfo.authors
+                Price = (decimal)(booksItem.saleInfo?.listPrice?.amount ?? 0),
+                Description = booksItem.volumeInfo.description ?? string.Empty,
+                ReleaseDate = DateTime.TryParse(booksItem.volumeInfo.publishedDate, out var releaseDate) ? releaseDate : DateTime.MinValue,
+                Authors = booksItem.volumeInfo.authors != null ? new HashSet<string>(booksItem.volumeInfo.authors) : new HashSet<string>()
             };
         }
     }
