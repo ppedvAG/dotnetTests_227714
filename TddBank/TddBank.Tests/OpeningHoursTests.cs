@@ -1,5 +1,4 @@
 ﻿using Microsoft.QualityTools.Testing.Fakes;
-using System.Reflection.Metadata.Ecma335;
 
 namespace TddBank.Tests
 {
