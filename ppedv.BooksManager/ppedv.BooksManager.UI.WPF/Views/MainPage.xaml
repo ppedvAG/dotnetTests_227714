@@ -26,9 +26,9 @@
             Background="{DynamicResource MahApps.Brushes.Gray10}">
 
             <WrapPanel DockPanel.Dock="Top">
-                <Button Command="{Binding LoadBooksCommand}">Laden</Button>
+                <Button AutomationProperties.AutomationId="b1" Command="{Binding LoadBooksCommand}">Laden</Button>
             </WrapPanel>
-            <DataGrid ItemsSource="{Binding BookList}">
+            <DataGrid AutomationProperties.AutomationId="g1" ItemsSource="{Binding BookList}">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
