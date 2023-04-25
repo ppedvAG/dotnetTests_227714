@@ -18,7 +18,7 @@ namespace ppedv.BooksManager.Logic
         {
             return ReadRepository.GetAll()
                                  .Where(x => x.ReleaseDate.Year == year)
-                                 .OrderBy(x => x.Price);
+                                 .OrderByDescending(x => x.Price);
         }
     }
 }

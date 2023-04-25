@@ -1,4 +1,5 @@
 using FluentAssertions;
+using Moq;
 using ppedv.BooksManager.Model;
 
 namespace ppedv.BooksManager.Logic.Test
@@ -24,6 +25,37 @@ namespace ppedv.BooksManager.Logic.Test
 
             result.Should().HaveCount(5).And.AllSatisfy(x => x.Id.Should().BeLessThan(6));
             //Assert.Equal(5, result.Count());
+        }
+
+        [Fact]
+        public void GetBooksOfYearOrderByPrice_should_filter_years_results_2_of_3_Books_moq()
+        {
+            var b1 = new Book() { Id = 1, ReleaseDate = new DateTime(2023, 04, 24) };
+            var b2 = new Book() { Id = 2, ReleaseDate = new DateTime(9999, 05, 23) };
+            var b3 = new Book() { Id = 3, ReleaseDate = new DateTime(2023, 06, 09) };
+            var mock = new Mock<IReadRepository>();
+            mock.Setup(x => x.GetAll()).Returns(() => new[] { b1, b2, b3 });
+            var bs = new BooksService(mock.Object);
+
+            var result = bs.GetBooksOfYearOrderByPrice(2023);
+
+            result.Should().HaveCount(2).And.AllSatisfy(x => x.Id.Should().BeOneOf(1, 3)).And.NotContain(b2);
+        }
+
+        [Fact]
+        public void GetBooksOfYearOrderByPrice_should_order_results_by_price_descending()
+        {
+            var b1 = new Book() { Id = 1, Price = 60, ReleaseDate = new DateTime(2023, 04, 25) };
+            var b2 = new Book() { Id = 2, Price = 40, ReleaseDate = new DateTime(2023, 04, 25) };
+            var b3 = new Book() { Id = 3, Price = 120, ReleaseDate = new DateTime(2023, 04, 25) };
+            var mock = new Mock<IReadRepository>();
+            mock.Setup(x => x.GetAll()).Returns(() => new[] { b1, b2, b3 });
+
+            var bs = new BooksService(mock.Object);
+
+            var result = bs.GetBooksOfYearOrderByPrice(2023);
+
+            result.Should().ContainInConsecutiveOrder(b3, b1, b2);
         }
     }
 
