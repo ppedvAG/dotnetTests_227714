@@ -4,7 +4,7 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using ppedv.BooksManager.Model;
 using ppedv.BooksManager.UI.WPF.Contracts.Services;
 using ppedv.BooksManager.UI.WPF.Models;
 using ppedv.BooksManager.UI.WPF.Services;
@@ -31,6 +31,8 @@ public class PagesTests
     private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
     {
         // Core Services
+        services.AddTransient<IReadRepository, Data.GoogleApi.BooksReadRepository>();
+
 
         // Services
         services.AddSingleton<IPageService, PageService>();
